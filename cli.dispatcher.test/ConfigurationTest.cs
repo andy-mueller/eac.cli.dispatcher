@@ -15,7 +15,7 @@ namespace cli.dispatcher.test
             configElement.Executable = "Path to executable";
             configElement.Parameters = "a lot of cli parameters";
 
-            Assert.Equal("Path to executable", configElement.Executable);
+            Assert.Equal("Path to executable", configElement.Executable); 
             Assert.Equal("a lot of cli parameters", configElement.Parameters);
         }
 
@@ -27,12 +27,14 @@ namespace cli.dispatcher.test
         [Fact]
         public void loadsAllConfiguredElements()
         {
-            IEnumerable<CliTemplateConfigurationElement> expectedElements = new List<CliTemplateConfigurationElement>
+            IEnumerable<CliTemplateConfigurationElement> expectedElements = 
+                new List<CliTemplateConfigurationElement>
             {
                 new CliTemplateConfigurationElement() { Executable="program 1", Parameters="a lot of parameters"},
                 new CliTemplateConfigurationElement() { Executable="program 2", Parameters="a lot of other parameters"}
             };
-            IEnumerable<CliTemplateConfigurationElement> configuredElements = generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
+            IEnumerable<CliTemplateConfigurationElement> configuredElements = 
+                generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
             Assert.Equal(expectedElements, configuredElements);
         }
         static IEnumerable<T> generify<T>(IEnumerable raw)

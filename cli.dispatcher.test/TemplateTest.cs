@@ -13,7 +13,7 @@ namespace cli.dispatcher.test
 
             var properties = new Dictionary<string, string>()
             {
-                ["KEY"] = "VALUE",
+                ["KEY"] = "VALUE"
             };
             var result = template.Replace(properties);
 
@@ -26,8 +26,8 @@ namespace cli.dispatcher.test
 
             var properties = new Dictionary<string, string>()
             {
-                ["KEY"] = "VALUE",
-                ["KEY2"] = "VALUE2",
+                { "KEY", "VALUE" },
+                { "KEY2","VALUE2" }
             };
             var result = template.Replace(properties);
 
