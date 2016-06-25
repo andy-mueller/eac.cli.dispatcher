@@ -25,14 +25,14 @@ namespace cli.dispatcher.test
             Assert.NotNull(CliTemplateConfigurationSection.Instance);
         }
         [Fact]
-        public void hasCorrecAmmountOfTemplates()
+        public void loadsAllConfiguredElements()
         {
             IEnumerable<CliTemplateConfigurationElement> expectedElements = new List<CliTemplateConfigurationElement>
             {
                 new CliTemplateConfigurationElement() { Executable="program 1", Parameters="a lot of parameters"},
                 new CliTemplateConfigurationElement() { Executable="program 2", Parameters="a lot of other parameters"}
             };
-            IEnumerable<CliTemplateConfigurationElement> configuredElements = generify< CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
+            IEnumerable<CliTemplateConfigurationElement> configuredElements = generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
             Assert.Equal(expectedElements, configuredElements);
         }
         static IEnumerable<T> generify<T>(IEnumerable raw)
