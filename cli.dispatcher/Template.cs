@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace cli.dispatcher.test
 {
-    internal class Template
+    public class Template
     {
         private string template;
 
