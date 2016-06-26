@@ -20,12 +20,12 @@ namespace cli.dispatcher.test
         }
 
         [Fact]
-        public void canLoadConfiguration()
+        public void CanLoadConfiguration()
         {
             Assert.NotNull(CliTemplateConfigurationSection.Instance);
         }
         [Fact]
-        public void loadsAllConfiguredElements()
+        public void LoadsAllConfiguredElements()
         {
             IEnumerable<CliTemplateConfigurationElement> expectedElements = 
                 new List<CliTemplateConfigurationElement>
@@ -34,10 +34,10 @@ namespace cli.dispatcher.test
                 new CliTemplateConfigurationElement() { Executable="program 2", Parameters="a lot of other parameters"}
             };
             IEnumerable<CliTemplateConfigurationElement> configuredElements = 
-                generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
+                Generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
             Assert.Equal(expectedElements, configuredElements);
         }
-        static IEnumerable<T> generify<T>(IEnumerable raw)
+        static IEnumerable<T> Generify<T>(IEnumerable raw)
         {
             foreach (T item in raw)
                 yield return item;
