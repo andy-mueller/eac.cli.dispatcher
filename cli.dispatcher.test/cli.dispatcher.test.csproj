@@ -60,7 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CliPropertyParserTest.cs" />
     <Compile Include="ConfigurationTest.cs" />
+    <Compile Include="Properties.cs" />
     <Compile Include="TemplateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
