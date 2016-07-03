@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cli.dispatcher.test
+namespace cli.dispatcher
 {
     public  class Properties : IEnumerable<KeyValuePair<string, string>>
     {
@@ -13,9 +14,14 @@ namespace cli.dispatcher.test
             this.properties = properties;
         }
 
-        public  static Properties of(IEnumerable<string> arguments)
+        public static Properties of(params string[] properties)
         {
-            IDictionary<string, string> properties = arguments.ToDictionary(s => s.Split('=')[0], s => s.Split('=')[1]);
+            return of(new List<String>(properties));
+        }
+
+        public  static Properties of(IEnumerable<string> listOfProperties)
+        {
+            IDictionary<string, string> properties = listOfProperties.ToDictionary(s => s.Split('=')[0], s => s.Split('=')[1]);
             return new Properties(properties);
         }
 

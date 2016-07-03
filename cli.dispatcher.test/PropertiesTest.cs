@@ -7,7 +7,7 @@ using Xunit;
 
 namespace cli.dispatcher.test
 {
-    public class CliPropertyParserTest
+    public class PropertiesTest
     {
         [Fact]
         public void ExtractProperty()
@@ -31,7 +31,7 @@ namespace cli.dispatcher.test
 
             Properties properties = Properties.of(arguments);
 
-            IEnumerable<KeyValuePair<string, string>> expected = new Dictionary<string, string>
+            var expected = new Dictionary<string, string>
             {
                 {"key", "value" },
                 {"key2", "value2" }

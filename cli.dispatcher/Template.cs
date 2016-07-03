@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cli.dispatcher.test
+namespace cli.dispatcher
 {
     public class Template
     {
