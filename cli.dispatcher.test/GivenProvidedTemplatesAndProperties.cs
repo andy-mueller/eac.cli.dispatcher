@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xunit;
-using cli.dispatcher;
-using System.Linq;
+using cli.dispatcher.usecase;
 
 namespace cli.dispatcher.test
 {
     public class GivenProvidedTemplatesAndProperties
     {
         [Fact]
-        public void templatesAreInstantiated() 
+        public void templatesAreInstantiated()
         {
             IEnumerable<CliTemplate> cliTemplates = new List<CliTemplate>{
                 new CliTemplate(executable : "program 1", parameter: "-T=%key%"),
@@ -36,9 +35,9 @@ namespace cli.dispatcher.test
                 return x.Arguments.Equals(y.Arguments) && x.FileName.Equals(y.FileName);
             }
 
-            public override int GetHashCode(ProcessStartInfo EqualityComparer)
+            public override int GetHashCode(ProcessStartInfo x)
             {
-                throw new NotImplementedException();
+                return 0;
             }
         }
 
@@ -51,29 +50,5 @@ namespace cli.dispatcher.test
                 this.startInfos.AddRange(startInfos);
             }
         }
-
-        
     }
-
-    public class ExecuteMultipleProcessesUseCase
-    {
-        private readonly ProcessExececutor processExecutor;
-
-        public ExecuteMultipleProcessesUseCase(ProcessExececutor processExecutor)
-        {
-            this.processExecutor = processExecutor;
-        }
-
-        internal void execute(IEnumerable<CliTemplate> cliTemplates, Properties properties)
-        {
-            var startInfos = cliTemplates.Select(cli=>cli.apply(properties)).Select(inst=>new ProcessStartInfo(fileName: inst.Executable, arguments: inst.Parameter));
-
-            processExecutor.run(startInfos);
-        }
-    }
-    public interface ProcessExececutor
-    {
-        void run(IEnumerable<ProcessStartInfo> startInfos);
-    }
-
 }

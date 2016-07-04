@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CliInstance.cs" />
-    <Compile Include="CliTemplate.cs" />
     <Compile Include="GivenProvidedTemplatesAndProperties.cs" />
     <Compile Include="PropertiesTest.cs" />
     <Compile Include="ConfigurationTest.cs" />

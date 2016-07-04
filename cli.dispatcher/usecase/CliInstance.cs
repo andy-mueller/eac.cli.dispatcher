@@ -1,4 +1,4 @@
-﻿namespace cli.dispatcher
+﻿namespace cli.dispatcher.usecase
 {
     public class CliInstance
     {

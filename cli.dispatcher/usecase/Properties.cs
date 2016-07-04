@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cli.dispatcher
+namespace cli.dispatcher.usecase
 {
     public  class Properties : IEnumerable<KeyValuePair<string, string>>
     {

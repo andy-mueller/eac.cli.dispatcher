@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace cli.dispatcher
+﻿namespace cli.dispatcher.usecase
 {
-    internal class CliTemplate
+    public class CliTemplate
     {
         private readonly Template executable;
         private readonly Template parameter;
