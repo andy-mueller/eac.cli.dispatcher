@@ -45,10 +45,11 @@ namespace cli.dispatcher.test
         {
             internal readonly List<ProcessStartInfo> startInfos = new List<ProcessStartInfo>();
 
-            public void run(IEnumerable<ProcessStartInfo> startInfos)
+            public void run(ProcessStartInfo startInfo)
             {
-                this.startInfos.AddRange(startInfos);
+                this.startInfos.Add(startInfo);
             }
+
         }
     }
 }

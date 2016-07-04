@@ -6,6 +6,6 @@ namespace cli.dispatcher.usecase
 
     public interface ProcessExececutor
     {
-        void run(IEnumerable<ProcessStartInfo> startInfos);
+        void run(ProcessStartInfo startInfo);
     }
 }

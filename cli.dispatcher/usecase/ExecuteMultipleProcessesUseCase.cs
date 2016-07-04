@@ -19,7 +19,8 @@ namespace cli.dispatcher.usecase
                                 .Select(cli => cli.apply(properties))
                                 .Select(inst => new ProcessStartInfo(fileName: inst.Executable, arguments: inst.Parameter));
 
-            processExecutor.run(executablesToRun);
+            foreach(var executableToRun in executablesToRun)
+                processExecutor.run(executableToRun);
         }
     }
 }
