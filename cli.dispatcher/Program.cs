@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
-using cli.dispatcher.configuration;
 
 namespace cli.dispatcher
 {
@@ -23,7 +20,23 @@ namespace cli.dispatcher
         
         void run()
         {
+            if (arguments.Contains("--test"))
+            {
+                runTest();
+            }
+            else
+            {
+                dispatchCommandLine();
+            }
         }
 
+        private void dispatchCommandLine()
+        {
+        }
+
+        private void runTest()
+        {
+            Console.WriteLine("testing...");
+        }
     }
 }

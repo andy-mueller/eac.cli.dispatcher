@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GivenProvidedTemplatesAndProperties.cs" />
+    <Compile Include="ProcessExecutorTest.cs" />
     <Compile Include="PropertiesTest.cs" />
     <Compile Include="ConfigurationTest.cs" />
     <Compile Include="TemplateTest.cs" />
