@@ -1,0 +1,11 @@
+ProcessExecutor
+	start an external program. What should be the name of the concrete executor?
+	pass output (out, err & exticode) back to the caller
+	
+Use case
+	pass combined output back to the caller
+	
+Program
+	dispatches on test branch
+	dispatches on use casse pranch
+	build use case abstraction???

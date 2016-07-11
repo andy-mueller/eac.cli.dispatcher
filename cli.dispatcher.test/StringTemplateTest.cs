@@ -4,7 +4,7 @@ using Xunit;
 
 namespace cli.dispatcher.test
 {
-    public class TemplateTest
+    public class StringTemplateTest
     {
         [Fact]
         public void simpleSubstitution()

@@ -21,35 +21,34 @@ namespace cli.dispatcher.test
             ExecuteMultipleProcessesUseCase uc = new ExecuteMultipleProcessesUseCase(processExecutor);
             uc.execute(cliTemplates, properties);
 
-            IEnumerable<ProcessStartInfo> expectedInfos = new List<ProcessStartInfo>{
-                new ProcessStartInfo(fileName: "program 1", arguments: "-T=value"),
-                new ProcessStartInfo(fileName: "program value", arguments: "-T=value2")
+            IEnumerable<CliRequest> expectedInfos = new List<CliRequest>{
+                new CliRequest(executable: "program 1", parameter: "-T=value"),
+                new CliRequest(executable: "program value", parameter: "-T=value2")
             };
-            Assert.Equal(expectedInfos, processExecutor.startInfos, new ProcessStartInfoEqualityComparer());
+            Assert.Equal(expectedInfos, processExecutor.startInfos, new CliRequestEqualityComparer());
         }
 
-        class ProcessStartInfoEqualityComparer : EqualityComparer<ProcessStartInfo>
+        class CliRequestEqualityComparer : EqualityComparer<CliRequest>
         {
-            public override bool Equals(ProcessStartInfo x, ProcessStartInfo y)
+            public override bool Equals(CliRequest x, CliRequest y)
             {
-                return x.Arguments.Equals(y.Arguments) && x.FileName.Equals(y.FileName);
+                return x.Parameter.Equals(y.Parameter) && x.Executable.Equals(y.Executable);
             }
 
-            public override int GetHashCode(ProcessStartInfo x)
+            public override int GetHashCode(CliRequest x)
             {
                 return 0;
             }
         }
 
-        class ProcessExececutorSpy : ProcessExececutor
+        class ProcessExececutorSpy : ProcessOperator
         {
-            internal readonly List<ProcessStartInfo> startInfos = new List<ProcessStartInfo>();
+            internal readonly List<CliRequest> startInfos = new List<CliRequest>();
 
-            public void run(ProcessStartInfo startInfo)
+            public void run(CliRequest request)
             {
-                this.startInfos.Add(startInfo);
+                this.startInfos.Add(request);
             }
-
         }
     }
 }

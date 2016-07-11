@@ -6,21 +6,16 @@ namespace cli.dispatcher.usecase
 {
     public class ExecuteMultipleProcessesUseCase
     {
-        private readonly ProcessExececutor processExecutor;
+        private readonly ProcessOperator processOperator;
 
-        public ExecuteMultipleProcessesUseCase(ProcessExececutor processExecutor)
+        public ExecuteMultipleProcessesUseCase(ProcessOperator processOperator)
         {
-            this.processExecutor = processExecutor;
+            this.processOperator = processOperator;
         }
 
         public void execute(IEnumerable<CliTemplate> cliTemplates, Properties properties)
         {
-            var executablesToRun = cliTemplates
-                                .Select(cli => cli.apply(properties))
-                                .Select(inst => new ProcessStartInfo(fileName: inst.Executable, arguments: inst.Parameter));
-
-            foreach(var executableToRun in executablesToRun)
-                processExecutor.run(executableToRun);
+            cliTemplates.Select(cli => cli.apply(properties)).ToList().ForEach(r=> processOperator.run(r));
         }
     }
 }

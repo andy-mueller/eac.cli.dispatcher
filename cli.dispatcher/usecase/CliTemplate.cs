@@ -11,12 +11,9 @@
             this.executable = Template.of(executable);
         }
         
-        public CliInstance apply(Properties properties)
+        public CliRequest apply(Properties properties)
         {
-            CliInstance instance = new CliInstance();
-            instance.Parameter = parameter.Replace(properties);
-            instance.Executable = executable.Replace(properties);
-            return instance;
+            return new CliRequest(executable: executable.Replace(properties), parameter: parameter.Replace(properties));
         }
     }
 }

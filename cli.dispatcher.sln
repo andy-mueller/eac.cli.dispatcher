@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.dispatcher.test", "cli.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E25B10B5-7BF6-409E-8822-3C1A60B42269}"
 	ProjectSection(SolutionItems) = preProject
+		notes.txt = notes.txt
 		run-test.ps1 = run-test.ps1
 	EndProjectSection
 EndProject

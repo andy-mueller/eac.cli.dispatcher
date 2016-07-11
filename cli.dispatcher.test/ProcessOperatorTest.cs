@@ -4,7 +4,7 @@ using Xunit;
 
 namespace cli.dispatcher.test
 {
-    public class ProcessExecutorTest
+    public class ProcessOperatorTest
     {
         [Fact]
         public void runExecutableInTestMode()

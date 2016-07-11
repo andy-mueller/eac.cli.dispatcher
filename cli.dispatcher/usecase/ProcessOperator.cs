@@ -4,8 +4,8 @@ using System.Diagnostics;
 namespace cli.dispatcher.usecase
 {
 
-    public interface ProcessExececutor
+    public interface ProcessOperator
     {
-        void run(ProcessStartInfo startInfo);
+        void run(CliRequest request);
     }
 }
