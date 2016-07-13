@@ -11,9 +11,9 @@
             this.executable = Template.of(executable);
         }
         
-        public CliRequest apply(Properties properties)
+        public CliRunCmd apply(Properties properties)
         {
-            return new CliRequest(executable: executable.Replace(properties), parameter: parameter.Replace(properties));
+            return new CliRunCmd(executable: executable.Replace(properties), parameters: parameter.Replace(properties));
         }
     }
 }

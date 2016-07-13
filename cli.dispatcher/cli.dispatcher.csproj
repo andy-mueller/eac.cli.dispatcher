@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="usecase\CliRequest.cs" />
+    <Compile Include="usecase\CliRunCmd.cs" />
+    <Compile Include="usecase\CliRunResult.cs" />
     <Compile Include="usecase\CliTemplate.cs" />
     <Compile Include="configuration\CliTemplateConfigurationElement.cs" />
     <Compile Include="configuration\CliTemplateConfigurationCollection.cs" />

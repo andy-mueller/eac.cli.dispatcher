@@ -6,6 +6,6 @@ namespace cli.dispatcher.usecase
 
     public interface ProcessOperator
     {
-        void run(CliRequest request);
+        CliRunResult run(CliRunCmd request);
     }
 }

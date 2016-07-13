@@ -21,21 +21,21 @@ namespace cli.dispatcher.test
             ExecuteMultipleProcessesUseCase uc = new ExecuteMultipleProcessesUseCase(processExecutor);
             uc.execute(cliTemplates, properties);
 
-            IEnumerable<CliRequest> expectedInfos = new List<CliRequest>{
-                new CliRequest(executable: "program 1", parameter: "-T=value"),
-                new CliRequest(executable: "program value", parameter: "-T=value2")
+            IEnumerable<CliRunCmd> expectedInfos = new List<CliRunCmd>{
+                new CliRunCmd(executable: "program 1", parameters: "-T=value"),
+                new CliRunCmd(executable: "program value", parameters: "-T=value2")
             };
             Assert.Equal(expectedInfos, processExecutor.startInfos, new CliRequestEqualityComparer());
         }
 
-        class CliRequestEqualityComparer : EqualityComparer<CliRequest>
+        class CliRequestEqualityComparer : EqualityComparer<CliRunCmd>
         {
-            public override bool Equals(CliRequest x, CliRequest y)
+            public override bool Equals(CliRunCmd x, CliRunCmd y)
             {
                 return x.Parameter.Equals(y.Parameter) && x.Executable.Equals(y.Executable);
             }
 
-            public override int GetHashCode(CliRequest x)
+            public override int GetHashCode(CliRunCmd x)
             {
                 return 0;
             }
@@ -43,11 +43,12 @@ namespace cli.dispatcher.test
 
         class ProcessExececutorSpy : ProcessOperator
         {
-            internal readonly List<CliRequest> startInfos = new List<CliRequest>();
+            internal readonly List<CliRunCmd> startInfos = new List<CliRunCmd>();
 
-            public void run(CliRequest request)
+            public CliRunResult run(CliRunCmd request)
             {
                 this.startInfos.Add(request);
+                return new CliRunResult(output: "NONE");
             }
         }
     }

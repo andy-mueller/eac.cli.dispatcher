@@ -9,3 +9,6 @@ Program
 	dispatches on test branch
 	dispatches on use casse pranch
 	build use case abstraction???
+
+AppConfig
+	use test nodes instead of attributes

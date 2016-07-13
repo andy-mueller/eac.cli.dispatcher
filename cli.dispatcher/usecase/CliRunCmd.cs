@@ -1,11 +1,11 @@
 ﻿namespace cli.dispatcher.usecase
 {
-    public class CliRequest
+    public class CliRunCmd
     {
-        public CliRequest(string executable, string parameter)
+        public CliRunCmd(string executable, string parameters)
         {
             Executable = executable;
-            Parameter = parameter;
+            Parameter = parameters;
         }
 
         public string Executable { get; internal set; }
