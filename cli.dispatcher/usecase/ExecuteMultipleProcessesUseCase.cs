@@ -15,7 +15,7 @@ namespace cli.dispatcher.usecase
 
         public void execute(IEnumerable<CliTemplate> cliTemplates, Properties properties)
         {
-            cliTemplates.Select(cli => cli.apply(properties)).ToList().ForEach(r=> processOperator.run(r));
+            cliTemplates.Select(cli => cli.apply(properties)).ToList().ForEach(r=> processOperator.Run(r));
         }
     }
 }

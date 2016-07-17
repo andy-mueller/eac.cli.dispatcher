@@ -7,7 +7,7 @@ namespace cli.dispatcher.test
     public class StringTemplateTest
     {
         [Fact]
-        public void simpleSubstitution()
+        public void SimpleSubstitution()
         {
             var template = Template.of("lalala %KEY%jfsj sölfkkf");
 
@@ -20,7 +20,7 @@ namespace cli.dispatcher.test
             Assert.Equal("lalala VALUEjfsj sölfkkf", result);
         }
         [Fact]
-        public void multipleSubstitution()
+        public void MultipleSubstitution()
         {
             var template = Template.of("lalala %KEY%jfsj söl%KEY2%fkkf");
 

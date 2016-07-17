@@ -1,14 +1,16 @@
-ProcessExecutor
-	start an external program. What should be the name of the concrete executor?
-	pass output (out, err & exticode) back to the caller
-	
-Use case
-	pass combined output back to the caller
-	
+
 Program
 	dispatches on test branch
-	dispatches on use casse pranch
-	build use case abstraction???
+	dispatches on use case branch
+		passesconfig and cli properties
+		build use case abstraction???
+	prints/logs program output
+	case: sub program not there
+	case sub program gives error
+	
 
 AppConfig
-	use test nodes instead of attributes
+	simplify use text nodes instead of attributes
+
+run sub programs in parallel
+	how? async await? CompletableFutures?

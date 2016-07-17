@@ -9,7 +9,7 @@ namespace cli.dispatcher.test
     public class GivenProvidedTemplatesAndProperties
     {
         [Fact]
-        public void templatesAreInstantiated()
+        public void TemplatesAreInstantiated()
         {
             IEnumerable<CliTemplate> cliTemplates = new List<CliTemplate>{
                 new CliTemplate(executable : "program 1", parameter: "-T=%key%"),
@@ -25,10 +25,10 @@ namespace cli.dispatcher.test
                 new CliRunCmd(executable: "program 1", parameters: "-T=value"),
                 new CliRunCmd(executable: "program value", parameters: "-T=value2")
             };
-            Assert.Equal(expectedInfos, processExecutor.startInfos, new CliRequestEqualityComparer());
+            Assert.Equal(expectedInfos, processExecutor.startInfos, new CliRunCmdEqualityComparer());
         }
 
-        class CliRequestEqualityComparer : EqualityComparer<CliRunCmd>
+        class CliRunCmdEqualityComparer : EqualityComparer<CliRunCmd>
         {
             public override bool Equals(CliRunCmd x, CliRunCmd y)
             {
@@ -45,7 +45,7 @@ namespace cli.dispatcher.test
         {
             internal readonly List<CliRunCmd> startInfos = new List<CliRunCmd>();
 
-            public CliRunResult run(CliRunCmd request)
+            public CliRunResult Run(CliRunCmd request)
             {
                 this.startInfos.Add(request);
                 return new CliRunResult(output: "NONE");

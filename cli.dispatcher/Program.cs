@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace cli.dispatcher
 {
@@ -7,18 +8,20 @@ namespace cli.dispatcher
     {
         static void Main(string[] args)
         {
-            Program program = new Program(new List<string>(args));
+            Program program = new Program(new List<string>(args), Console.Out);
             program.run();
         }
 
         private readonly IList<string> arguments;
+        private readonly TextWriter output;
 
-        Program(IList<string> arguments)
+        public Program(IList<string> arguments, TextWriter output)
         {
             this.arguments = arguments;
+            this.output = output;
         }
         
-        void run()
+        public void run()
         {
             if (arguments.Contains("--test"))
             {
@@ -36,7 +39,7 @@ namespace cli.dispatcher
 
         private void runTest()
         {
-            Console.WriteLine("testing...");
+            output.WriteLine("testing...");
         }
     }
 }

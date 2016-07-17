@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagnosticsProcessOperator.cs" />
     <Compile Include="usecase\CliRunCmd.cs" />
     <Compile Include="usecase\CliRunResult.cs" />
     <Compile Include="usecase\CliTemplate.cs" />
