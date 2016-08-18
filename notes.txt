@@ -4,6 +4,7 @@ Program
 	dispatches on use case branch
 		passesconfig and cli properties
 		build use case abstraction???
+	can handle non key value pairs
 	prints/logs program output
 	case: sub program not there
 	case sub program gives error

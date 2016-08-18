@@ -1,9 +1,11 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 
 namespace cli.dispatcher.configuration
 {
     [ConfigurationCollection(typeof(CliTemplateConfigurationElement), AddItemName = "cli-template", CollectionType =ConfigurationElementCollectionType.BasicMap)]
-    public class CliTemplateConfigurationElementsCollection : ConfigurationElementCollection
+    public class CliTemplateConfigurationElementsCollection : ConfigurationElementCollection, IEnumerable<CliTemplateConfigurationElement>
     {
         public override ConfigurationElementCollectionType CollectionType
         {
@@ -24,5 +26,12 @@ namespace cli.dispatcher.configuration
             return ((CliTemplateConfigurationElement)element).Executable;
         }
 
+        IEnumerator<CliTemplateConfigurationElement> IEnumerable<CliTemplateConfigurationElement>.GetEnumerator()
+        {
+            foreach(CliTemplateConfigurationElement elem in this)
+            {
+                yield return elem;
+            }
+        }
     }
 }

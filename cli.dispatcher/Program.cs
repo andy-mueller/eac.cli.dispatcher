@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using cli.dispatcher.usecase;
+using cli.dispatcher.configuration;
 
 namespace cli.dispatcher
 {
@@ -14,6 +17,7 @@ namespace cli.dispatcher
 
         private readonly IList<string> arguments;
         private readonly TextWriter output;
+        private ProcessOperator processOperator;
 
         public Program(IList<string> arguments, TextWriter output)
         {
@@ -35,6 +39,26 @@ namespace cli.dispatcher
 
         private void dispatchCommandLine()
         {
+            ExecuteMultipleProcessesUseCase useCase = new ExecuteMultipleProcessesUseCase(processOperator);
+            IEnumerable<CliTemplate> cliTemplates = readTemplatedFromAppConfig();
+            Properties properties = readPropertiesFromArguments();
+
+            useCase.execute(cliTemplates, properties);
+        }
+
+        private Properties readPropertiesFromArguments()
+        {
+            return Properties.of(arguments);
+        }
+
+        private IEnumerable<CliTemplate> readTemplatedFromAppConfig()
+        {
+            return CliTemplateConfigurationSection.Instance.Templates.Select((t) => new CliTemplate(t.Executable, t.Parameters));
+        }
+
+        public void overrideProcessOperator(ProcessOperator processOperator)
+        {
+            this.processOperator = processOperator;
         }
 
         private void runTest()

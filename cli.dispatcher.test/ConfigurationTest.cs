@@ -30,8 +30,8 @@ namespace cli.dispatcher.test
             IEnumerable<CliTemplateConfigurationElement> expectedElements = 
                 new List<CliTemplateConfigurationElement>
             {
-                new CliTemplateConfigurationElement() { Executable="program 1", Parameters="a lot of parameters"},
-                new CliTemplateConfigurationElement() { Executable="program 2", Parameters="a lot of other parameters"}
+                new CliTemplateConfigurationElement() { Executable="program 1", Parameters="%key% parameters"},
+                new CliTemplateConfigurationElement() { Executable="program 2", Parameters="%key2% parameters"}
             };
             IEnumerable<CliTemplateConfigurationElement> configuredElements = 
                 Generify<CliTemplateConfigurationElement>(CliTemplateConfigurationSection.Instance.Templates);
