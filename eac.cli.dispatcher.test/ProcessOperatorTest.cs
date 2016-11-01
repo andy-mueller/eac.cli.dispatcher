@@ -15,7 +15,7 @@ namespace cli.dispatcher.test
             CliRunCmd cmd = new CliRunCmd(executable: "cli.dispatcher.exe", parameters: "--test");
             CliRunResult result = processOperator.Run(cmd);
 
-            Assert.Equal("testing...\r\n", result.Output);
+            Assert.StartsWith("testing...\r\n--test", result.Output);
         }
     }
 }

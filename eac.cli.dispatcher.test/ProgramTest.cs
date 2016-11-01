@@ -13,20 +13,19 @@ namespace cli.dispatcher.test
         {
             var args = new List<string>(){"--test"};
             StringWriter tw = new StringWriter();
-            Program program = new Program(args, tw);
+            Program program = new Program(args, tw, new ProcessOperatorSpy());
 
             program.run();
 
-            Assert.Equal("testing...\r\n", tw.ToString());
+            Assert.StartsWith("testing...\r\n", tw.ToString());
         }
         [Fact]
         public void GiveConfigurationAndPoperties_DispatchesTo()
         {
             var args = new List<string>() { "key=1", "key2=2" };
             StringWriter tw = new StringWriter();
-            Program program = new Program(args, tw);
             ProcessOperatorSpy operatorSpy = new ProcessOperatorSpy();
-            program.overrideProcessOperator(operatorSpy);
+            Program program = new Program(args, tw, operatorSpy);
 
             program.run();
 

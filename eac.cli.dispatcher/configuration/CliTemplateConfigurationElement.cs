@@ -16,5 +16,9 @@ namespace cli.dispatcher.configuration
             get { return (string)this["parameters"]; }
             set { this["parameters"] = value; }
         }
+        public override string ToString()
+        {
+            return "[CliConfig, executable=" + Executable + ". parameters=" + Parameters + "]";
+        }
     }
 }

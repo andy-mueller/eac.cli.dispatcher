@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.dispatcher", "cli.dispatcher\cli.dispatcher.csproj", "{DC1F3DDA-61E9-4134-9E24-E3BE295137A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eac.cli.dispatcher", "eac.cli.dispatcher\eac.cli.dispatcher.csproj", "{DC1F3DDA-61E9-4134-9E24-E3BE295137A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.dispatcher.test", "cli.dispatcher.test\cli.dispatcher.test.csproj", "{F8FF6156-9971-4041-8C0C-42D911850A90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eac.cli.dispatcher.test", "eac.cli.dispatcher.test\eac.cli.dispatcher.test.csproj", "{F8FF6156-9971-4041-8C0C-42D911850A90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E25B10B5-7BF6-409E-8822-3C1A60B42269}"
 	ProjectSection(SolutionItems) = preProject

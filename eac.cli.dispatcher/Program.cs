@@ -11,18 +11,20 @@ namespace cli.dispatcher
     {
         static void Main(string[] args)
         {
-            Program program = new Program(new List<string>(args), Console.Out);
+            ProcessOperator processOperator = new DiagnosticsProcessOperator();
+            Program program = new Program(new List<string>(args), Console.Out, processOperator);
             program.run();
         }
 
-        private readonly IList<string> arguments;
+        private readonly List<string> arguments;
         private readonly TextWriter output;
-        private ProcessOperator processOperator;
+        private readonly ProcessOperator processOperator;
 
-        public Program(IList<string> arguments, TextWriter output)
+        public Program(List<string> arguments, TextWriter output, ProcessOperator processOperator)
         {
             this.arguments = arguments;
             this.output = output;
+            this.processOperator = processOperator;
         }
         
         public void run()
@@ -56,14 +58,12 @@ namespace cli.dispatcher
             return CliTemplateConfigurationSection.Instance.Templates.Select((t) => new CliTemplate(t.Executable, t.Parameters));
         }
 
-        public void overrideProcessOperator(ProcessOperator processOperator)
-        {
-            this.processOperator = processOperator;
-        }
-
         private void runTest()
         {
             output.WriteLine("testing...");
+            arguments.ForEach(arg => output.Write(arg + " "));
+            output.WriteLine();
+            CliTemplateConfigurationSection.Instance.Templates.ToList().ForEach(cli => output.WriteLine(cli));
         }
     }
 }
