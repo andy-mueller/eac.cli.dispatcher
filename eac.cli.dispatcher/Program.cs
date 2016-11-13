@@ -43,9 +43,15 @@ namespace cli.dispatcher
         {
             ExecuteMultipleProcessesUseCase useCase = new ExecuteMultipleProcessesUseCase(processOperator);
             IEnumerable<CliTemplate> cliTemplates = readTemplatedFromAppConfig();
+            IEnumerable<string> cutProps = readCutPropertiesFromConfig();
             Properties properties = readPropertiesFromArguments();
 
-            useCase.execute(cliTemplates, properties);
+            useCase.execute(cliTemplates, cutProps, properties);
+        }
+
+        private IEnumerable<string> readCutPropertiesFromConfig()
+        {
+            return new List<string>();
         }
 
         private Properties readPropertiesFromArguments()

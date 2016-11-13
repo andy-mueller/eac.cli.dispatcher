@@ -4,18 +4,18 @@ using System.Linq;
 
 namespace cli.dispatcher
 {
-    public class Template
+    public class StringTemplate
     {
-        private string template;
+        private readonly string template;
 
-        Template(string template)
+        StringTemplate(string template)
         {
             this.template = template;
         }
 
-        public static Template of(string template)
+        public static StringTemplate of(string template)
         {
-            return new Template(template);
+            return new StringTemplate(template);
         }
 
         public string Replace(IEnumerable<KeyValuePair<string, string>> properties)
@@ -25,23 +25,39 @@ namespace cli.dispatcher
 
         private static string Replace(string template, KeyValuePair<string, string> property)
         {
-            return template.Replace(string.Format("%{0}%", property.Key), property.Value);
+            return template.Replace(format(property.Key), property.Value);
         }
 
-        public string Cut(Dictionary<string, string> properties, IEnumerable<string> cuts)
+        private static string format(string prop)
+        {
+            return string.Format("%{0}%",prop);
+        }
+
+        public StringTemplate CutOut(string cutmark)
         {
             String reducedTemplate = template;
-            foreach(string cut in cuts) { 
-                string cutProp = string.Format("%{0}%", cut);
-                int first = reducedTemplate.IndexOf(cutProp);
-                while (first > 0)
-                {
-                    int last = reducedTemplate.IndexOf(cutProp, first + 1) + cutProp.Length;
-                    reducedTemplate = reducedTemplate.Remove(first, last - first);
-                    first = reducedTemplate.IndexOf(cutProp);
-                }
-            }
-            return reducedTemplate;
+            string cutProp = format(cutmark);
+            reducedTemplate = CutFromString(reducedTemplate, cutProp);
+            return StringTemplate.of(reducedTemplate);
+        }
+
+        public StringTemplate Cut(string cutmark)
+        {
+            return new StringTemplate(template.Replace(format(cutmark), string.Empty));
+        }
+
+        private static string CutFromString(string str, string cutout)
+        {
+            int first = str.IndexOf(cutout);
+            if (first < 0) return str;
+            int last = str.IndexOf(cutout, first + 1) + cutout.Length;
+            str = str.Remove(first, last - first);
+            return CutFromString(str, cutout);
+        }
+
+        public string asString()
+        {
+            return template;
         }
     }
 }

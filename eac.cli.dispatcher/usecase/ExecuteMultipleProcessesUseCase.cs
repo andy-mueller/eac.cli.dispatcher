@@ -13,9 +13,9 @@ namespace cli.dispatcher.usecase
             this.processOperator = processOperator;
         }
 
-        public void execute(IEnumerable<CliTemplate> cliTemplates, Properties properties)
+        public void execute(IEnumerable<CliTemplate> cliTemplates, IEnumerable<string> cutProps, Properties properties)
         {
-            cliTemplates.Select(cli => cli.apply(properties)).ToList().ForEach(r=> processOperator.Run(r));
+            cliTemplates.Select(cli => cli.apply(properties, cutProps)).ToList().ForEach(r=> processOperator.Run(r));
         }
     }
 }

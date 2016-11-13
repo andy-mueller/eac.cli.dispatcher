@@ -34,5 +34,9 @@ namespace cli.dispatcher.usecase
         {
             return properties.GetEnumerator();
         }
+        public bool Contains(String key)
+        {
+            return properties.ContainsKey(key);
+        }
     }
 }
