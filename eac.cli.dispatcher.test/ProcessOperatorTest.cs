@@ -12,7 +12,7 @@ namespace cli.dispatcher.test
         {
             ProcessOperator processOperator = new DiagnosticsProcessOperator();
 
-            CliRunCmd cmd = new CliRunCmd(executable: "cli.dispatcher.exe", parameters: "--test");
+            CliRunCmd cmd = new CliRunCmd(executable: "eac.cli.dispatcher.exe", parameters: "--test");
             CliRunResult result = processOperator.Run(cmd);
 
             Assert.StartsWith("testing...\r\n--test", result.Output);
