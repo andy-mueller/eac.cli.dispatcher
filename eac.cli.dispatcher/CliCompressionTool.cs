@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace cli.dispatcher
 {
-    public class DiagnosticsProcessOperator : ProcessOperator
+    public class CliCompressionTool : CompressionTool
     {
         public CliRunResult Run(CliRunCmd request)
         {

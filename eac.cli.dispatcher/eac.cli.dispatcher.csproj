@@ -44,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiagnosticsProcessOperator.cs" />
+    <Compile Include="CliCompressionTool.cs" />
     <Compile Include="usecase\CliRunCmd.cs" />
     <Compile Include="usecase\CliRunResult.cs" />
     <Compile Include="usecase\CliTemplate.cs" />
     <Compile Include="configuration\CliTemplateConfigurationElement.cs" />
     <Compile Include="configuration\CliTemplateConfigurationCollection.cs" />
     <Compile Include="configuration\CliTemplateConfigurationSection.cs" />
-    <Compile Include="usecase\ExecuteMultipleProcessesUseCase.cs" />
-    <Compile Include="usecase\ProcessOperator.cs" />
+    <Compile Include="usecase\RunMultipleCompressionToolsUseCase.cs" />
+    <Compile Include="usecase\CompressionTool.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="usecase\Properties.cs" />
+    <Compile Include="usecase\CompressionToolProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="usecase\StringTemplate.cs" />
   </ItemGroup>

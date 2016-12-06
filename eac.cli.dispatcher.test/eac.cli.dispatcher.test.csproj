@@ -72,9 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GivenProvidedTemplatesAndProperties.cs" />
-    <Compile Include="ProcessOperatorTest.cs" />
+    <Compile Include="CliCompressionToolTest.cs" />
     <Compile Include="ProgramTest.cs" />
-    <Compile Include="PropertiesTest.cs" />
+    <Compile Include="CompressionToolPropertiesTest.cs" />
     <Compile Include="ConfigurationTest.cs" />
     <Compile Include="StringTemplateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

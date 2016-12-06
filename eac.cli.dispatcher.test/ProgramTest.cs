@@ -49,7 +49,7 @@ namespace cli.dispatcher.test
         };
        
 
-        private class ProcessOperatorSpy : ProcessOperator
+        private class ProcessOperatorSpy : CompressionTool
         {
             internal List<CliRunCmd> calledWith = new List<CliRunCmd>();
             public CliRunResult Run(CliRunCmd request)

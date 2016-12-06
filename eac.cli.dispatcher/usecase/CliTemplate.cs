@@ -37,7 +37,7 @@ namespace cli.dispatcher.usecase
                 parameter = parameter.Cut(cutmark );
             }
         }
-        public CliRunCmd apply(Properties properties, IEnumerable<string> cutProps)
+        public CliRunCmd apply(CompressionToolProperties properties, IEnumerable<string> cutProps)
         {
             Templates templates = new Templates(executable, parameter);
             cutProps.Where(c => !properties.Contains(c)).ToList().ForEach(templates.Cutout);

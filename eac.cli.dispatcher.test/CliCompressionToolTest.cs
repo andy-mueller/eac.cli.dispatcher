@@ -5,12 +5,12 @@ using Xunit;
 
 namespace cli.dispatcher.test
 {
-    public class ProcessOperatorTest
+    public class CliCompressionToolTest
     {
         [Fact]
         public void CanExecuteExecutableWithParamaters()
         {
-            ProcessOperator processOperator = new DiagnosticsProcessOperator();
+            CompressionTool processOperator = new CliCompressionTool();
 
             CliRunCmd cmd = new CliRunCmd(executable: "eac.cli.dispatcher.exe", parameters: "--test");
             CliRunResult result = processOperator.Run(cmd);

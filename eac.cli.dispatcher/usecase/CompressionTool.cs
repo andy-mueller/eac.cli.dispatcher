@@ -3,7 +3,7 @@
 namespace cli.dispatcher.usecase
 {
 
-    public interface ProcessOperator
+    public interface CompressionTool
     {
         CliRunResult Run(CliRunCmd request);
     }

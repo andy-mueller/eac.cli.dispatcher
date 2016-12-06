@@ -15,10 +15,10 @@ namespace cli.dispatcher.test
                 new CliTemplate(executable : "program 1", parameter: "-T=%key%"),
                 new CliTemplate(executable : "program %key%", parameter: "-T=%key2%%cut%to be removed%cut% %no_cut%K=1234%no_cut%"),
             };
-            Properties properties = Properties.of("key=value", "key2=value2", "no_cut=true");
+            CompressionToolProperties properties = CompressionToolProperties.of("key=value", "key2=value2", "no_cut=true");
 
             ProcessExececutorSpy processExecutor = new ProcessExececutorSpy();
-            ExecuteMultipleProcessesUseCase uc = new ExecuteMultipleProcessesUseCase(processExecutor);
+            RunMultipleCompressionToolsUseCase uc = new RunMultipleCompressionToolsUseCase(processExecutor);
             IEnumerable<string> cutProps = new List<string>() { "cut", "no_cut"};
             uc.execute(cliTemplates, cutProps, properties);
 
@@ -42,7 +42,7 @@ namespace cli.dispatcher.test
             }
         }
 
-        class ProcessExececutorSpy : ProcessOperator
+        class ProcessExececutorSpy : CompressionTool
         {
             internal readonly List<CliRunCmd> startInfos = new List<CliRunCmd>();
 

@@ -4,14 +4,14 @@ using Xunit;
 
 namespace cli.dispatcher.test
 {
-    public class PropertiesTest
+    public class CompressionToolPropertiesTest
     {
         [Fact]
         public void ExtractProperty()
         {
             IEnumerable<string> arguments = new List<string> { "key=value"};
         
-            Properties properties = Properties.of(arguments);
+            CompressionToolProperties properties = CompressionToolProperties.of(arguments);
 
             IEnumerable<KeyValuePair<string, string>> expected = new Dictionary<string, string>
             {
@@ -26,7 +26,7 @@ namespace cli.dispatcher.test
         {
             IEnumerable<string> arguments = new List<string> { "key=value", "key2=value2" };
 
-            Properties properties = Properties.of(arguments);
+            CompressionToolProperties properties = CompressionToolProperties.of(arguments);
 
             var expected = new Dictionary<string, string>
             {

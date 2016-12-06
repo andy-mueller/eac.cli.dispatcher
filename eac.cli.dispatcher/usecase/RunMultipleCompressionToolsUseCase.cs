@@ -4,16 +4,16 @@ using System.Linq;
 
 namespace cli.dispatcher.usecase
 {
-    public class ExecuteMultipleProcessesUseCase
+    public class RunMultipleCompressionToolsUseCase
     {
-        private readonly ProcessOperator processOperator;
+        private readonly CompressionTool processOperator;
 
-        public ExecuteMultipleProcessesUseCase(ProcessOperator processOperator)
+        public RunMultipleCompressionToolsUseCase(CompressionTool processOperator)
         {
             this.processOperator = processOperator;
         }
 
-        public void execute(IEnumerable<CliTemplate> cliTemplates, IEnumerable<string> cutProps, Properties properties)
+        public void execute(IEnumerable<CliTemplate> cliTemplates, IEnumerable<string> cutProps, CompressionToolProperties properties)
         {
             cliTemplates.Select(cli => cli.apply(properties, cutProps)).ToList().ForEach(r=> processOperator.Run(r));
         }

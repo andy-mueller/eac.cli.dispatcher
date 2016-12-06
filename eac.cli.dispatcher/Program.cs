@@ -11,16 +11,16 @@ namespace cli.dispatcher
     {
         static void Main(string[] args)
         {
-            ProcessOperator processOperator = new DiagnosticsProcessOperator();
+            CompressionTool processOperator = new CliCompressionTool();
             Program program = new Program(new List<string>(args), Console.Out, processOperator);
             program.run();
         }
 
         private readonly List<string> arguments;
         private readonly TextWriter output;
-        private readonly ProcessOperator processOperator;
+        private readonly CompressionTool processOperator;
 
-        public Program(List<string> arguments, TextWriter output, ProcessOperator processOperator)
+        public Program(List<string> arguments, TextWriter output, CompressionTool processOperator)
         {
             this.arguments = arguments;
             this.output = output;
@@ -41,10 +41,10 @@ namespace cli.dispatcher
 
         private void dispatchCommandLine()
         {
-            ExecuteMultipleProcessesUseCase useCase = new ExecuteMultipleProcessesUseCase(processOperator);
+            RunMultipleCompressionToolsUseCase useCase = new RunMultipleCompressionToolsUseCase(processOperator);
             IEnumerable<CliTemplate> cliTemplates = readTemplatedFromAppConfig();
             IEnumerable<string> cutProps = readCutPropertiesFromConfig();
-            Properties properties = readPropertiesFromArguments();
+            CompressionToolProperties properties = readPropertiesFromArguments();
 
             useCase.execute(cliTemplates, cutProps, properties);
         }
@@ -54,9 +54,9 @@ namespace cli.dispatcher
             return new List<string>();
         }
 
-        private Properties readPropertiesFromArguments()
+        private CompressionToolProperties readPropertiesFromArguments()
         {
-            return Properties.of(arguments);
+            return CompressionToolProperties.of(arguments);
         }
 
         private IEnumerable<CliTemplate> readTemplatedFromAppConfig()
